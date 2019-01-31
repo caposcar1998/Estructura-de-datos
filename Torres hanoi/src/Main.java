@@ -11,7 +11,7 @@ public static void main(String []main) {
 	hanoi.setAnillo(sc.nextInt() );
 	hanoi.numeroMovimientos();
 	System.out.println("Los movimientos necesarios para esta torre son "+ hanoi.getMovimientos());
-	hanoi.setTorre1(null);
+	hanoi.setTorre1(null );
 	hanoi.setTorre2(null);
 	hanoi.setTorre3(null);
 }
