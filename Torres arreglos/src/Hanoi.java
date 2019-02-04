@@ -42,7 +42,6 @@ public class Hanoi {
 	public void setTorre2(int[] torre2) {
 		this.torre2 = torre2;
 	}
-	
 	public int[] getNumero2() {
 		return numero2;
 	}
@@ -88,9 +87,23 @@ public class Hanoi {
 		
 		}//fin torres vacias
 	
+	
+	
+	
+	
+	
+	
+	
+	
 	public void algo(int n, int[]a, int[]b, int[]c) {
+		
 		if(n==1) {
+			//de torre a a torre c
 			
+			
+			
+			
+			//fin mamada
 			System.out.println(Arrays.toString(getTorre1()));
 			System.out.println(Arrays.toString(getTorre2()));
 			System.out.println(Arrays.toString(getTorre3()));
@@ -98,42 +111,27 @@ public class Hanoi {
 			
 		}else {
 			algo(n-1, a, c, b);
-			//mamada
+			//mamada de torre a a a c
+			
+			
 			
 				
-			
 			//fin mamada
 			System.out.println(Arrays.toString(getTorre1()));
 			System.out.println(Arrays.toString(getTorre2()));
 			System.out.println(Arrays.toString(getTorre3()));
 			System.out.println("");
 			algo(n-1,b,a,c);
-			//mamada 2
-			System.out.println(Arrays.toString(getTorre1()));
-			System.out.println(Arrays.toString(getTorre2()));
-			System.out.println(Arrays.toString(getTorre3()));
-			System.out.println("");
-			}//fin for
 			
-		}//fin else
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+			}//fin if
 			
-			
-			
-			
-			
+		}//fin método
+	
+	
+	
 }
+	
+	
+		
+	
+	
