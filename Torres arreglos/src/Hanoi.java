@@ -60,7 +60,6 @@ public class Hanoi {
 	public void setNumero3(int[] numero3) {
 		this.numero3 = numero3;
 	}
-	
 	public int numeroMovimientos() {
 		movimiento=(int) (Math.pow(2, getAnillo())-1);
 		return movimiento;
@@ -96,10 +95,16 @@ public class Hanoi {
 	
 	
 	public void algo(int n, int[]a, int[]b, int[]c) {
-		
+	
 		if(n==1) {
 			//de torre a a torre c
-			
+			for(int i=0;i<c.length;i++) {
+				if(c[i]==0) {
+				c[i]=a[0];
+				a[0]=0;
+				}
+				
+			}
 			
 			
 			
@@ -113,6 +118,14 @@ public class Hanoi {
 			algo(n-1, a, c, b);
 			//mamada de torre a a a c
 			
+			for(int i=0;i<a.length;i++) {
+				if(a[i]<n & c[i]==0) {
+					c[i]=a[i];
+					a[i]=0;
+					}
+				
+				
+			}
 			
 			
 				
@@ -133,5 +146,8 @@ public class Hanoi {
 	
 	
 		
+	
+	
+	
 	
 	
