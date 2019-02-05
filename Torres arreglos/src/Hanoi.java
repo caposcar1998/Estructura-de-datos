@@ -145,9 +145,3 @@ public class Hanoi {
 }
 	
 	
-		
-	
-	
-	
-	
-	

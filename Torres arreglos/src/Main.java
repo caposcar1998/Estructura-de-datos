@@ -22,6 +22,12 @@ public class Main {
 		hanoi.llenarTorre1();
 		hanoi.llenarTorresVacias();
 		
+		System.out.println("Torre original");
+		System.out.println(Arrays.toString(hanoi.getTorre1()));
+		System.out.println(Arrays.toString(hanoi.getTorre2()));
+		System.out.println(Arrays.toString(hanoi.getTorre3()));
+		System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
+		
 		hanoi.algo(hanoi.getAnillo(), hanoi.getTorre1(), hanoi.getTorre2(), hanoi.getTorre3());
 		
 		
