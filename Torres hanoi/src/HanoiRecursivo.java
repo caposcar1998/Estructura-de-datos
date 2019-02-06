@@ -25,12 +25,8 @@ public class HanoiRecursivo {
 		      sumatoria();
 		      recursividad(n-1, torre2, torre1, torre3);
 		  }
-		  if(n==0) {
-
-		  }
 	}
 	public void sumatoria() {
 		setMovimientos(getMovimientos()+1);
-		
 	}
 }
