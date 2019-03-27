@@ -9,15 +9,16 @@ import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
 public class Window extends Application {
 	
 	HashTable <Integer, Student> lista= new HashTable<>();
-	private VBox opciones, prueba;
-	private Scene verOpciones, verLista;
-	private Label pedirNombre, pedirMatricula, pedirCalificacion, buscarMatriculaEnSistema, listaFinal;
+	private VBox opciones;
+	private Scene verOpciones;
+	private Label pedirNombre, pedirMatricula, pedirCalificacion, buscarMatriculaEnSistema, listaFinal, mostrarMatricula;
 	private Button anadir, buscar, regresar;
 	private TextField nombre, matricula, calificacion, buscarMatricula;
 	
@@ -37,8 +38,8 @@ public class Window extends Application {
 
 	private void initComponents(Stage stage0) {
 		
-		opciones= new VBox(10);
-		verOpciones= new Scene(opciones,300,500);
+		opciones= new VBox(12);
+		verOpciones= new Scene(opciones,1000,1000);
 		pedirNombre= new Label("Introducir nombre");
 		opciones.getChildren().add(pedirNombre);
 		nombre= new TextField("                  ");
@@ -61,8 +62,10 @@ public class Window extends Application {
 		buscar= new Button("Buscar matricula");
 		opciones.getChildren().add(buscar);
 		buscar.setOnAction(new buscarMatriculaEnElSiustema() );
-		
-		
+		mostrarMatricula= new Label("Resultado");
+		opciones.getChildren().add(mostrarMatricula);
+		listaFinal= new Label();
+		//poner en la lsita
 		stage0.setScene(verOpciones);
 		
 		
@@ -90,7 +93,8 @@ public class Window extends Application {
 	
 	public class buscarMatriculaEnElSiustema implements EventHandler<ActionEvent>{
 		public void handle(	ActionEvent e){
-			System.out.println("Huevos");
+			
+			
 		}
 	}
 	
