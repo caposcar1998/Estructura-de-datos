@@ -47,7 +47,7 @@ public class Window extends Application {
 		opciones.getChildren().add(pedirNombre);
 		nombre= new TextField(                         );
 		opciones.getChildren().add(nombre);
-		pedirMatricula=new Label("Introducir matricula");
+		pedirMatricula=new Label("Introducir matricula (omitir letras)");
 		opciones.getChildren().add(pedirMatricula);
 		matricula= new TextField(                            );
 		opciones.getChildren().add(matricula);
@@ -58,7 +58,7 @@ public class Window extends Application {
 		anadir= new Button("Anadir");
 		opciones.getChildren().add(anadir);
 		anadir.setOnAction(new actualizar() );
-		buscarMatriculaEnSistema= new Label("Matricula a buscar");
+		buscarMatriculaEnSistema= new Label("Matricula a buscar (omtir letras)");
 		opciones.getChildren().add(buscarMatriculaEnSistema);
 		buscarMatricula= new TextField(                       );
 		opciones.getChildren().add(buscarMatricula);
@@ -135,7 +135,12 @@ public class Window extends Application {
 			System.out.println(lista.getValue(x).getCalificacion());
 			mostrarMatricula.setText(" El estudiante "+ lista.getValue(x).getNombre() +" tiene "+lista.getValue(x).getCalificacion()+" de calificacion");
 			buscarMatricula.clear();
-			}catch( java.lang.NumberFormatException g) {}
+			}catch( java.lang.NumberFormatException g) {
+				buscarMatricula.clear();
+			}catch(java.lang.NullPointerException aa) {
+				buscarMatricula.clear();
+				mostrarMatricula.setText("Esta matricula no existe en el sistema");
+			}
 		}
 	}
 	
