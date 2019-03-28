@@ -1,3 +1,4 @@
+import java.awt.Label;
 
 public class HashTable <K,V>{
 	
@@ -80,5 +81,7 @@ public class HashTable <K,V>{
 			}
 		}
 	}
+	
 
 }
+	
