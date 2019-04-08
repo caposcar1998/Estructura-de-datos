@@ -65,7 +65,7 @@ public class Window extends Application {
 		buscar= new Button("Buscar matricula");
 		opciones.getChildren().add(buscar);
 		buscar.setOnAction(new buscarMatriculaEnElSiustema() );
-		mostrarMatricula= new Label("Resultado");
+		mostrarMatricula= new Label("");
 		opciones.getChildren().add(mostrarMatricula);
 		
 		
@@ -121,6 +121,7 @@ public class Window extends Application {
 			matricula.clear();
 			calificacion.clear();
 			opciones.getChildren().remove(listaFinal);
+			opciones.getChildren().add(listaFinal);
 			printInterfaz();
 		}
 
