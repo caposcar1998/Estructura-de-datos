@@ -30,7 +30,7 @@ public class HashTable <K,V>{
 			return result.getValue().getElement();
 		}else {
 			Node<V> temp=result.getValue();
-			System.out.println("Key :"+key.hashCode());
+			//System.out.println("Key :"+key.hashCode());
 			while(temp!=null&&temp.getElement().hashCode()!=key.hashCode()) {
 				System.out.println("Temp: "+temp.getElement().hashCode());
 				temp=temp.getNext();
