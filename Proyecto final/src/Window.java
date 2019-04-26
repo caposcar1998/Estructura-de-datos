@@ -1,4 +1,4 @@
-import javax.swing.JTable;
+//import javax.swing.JTable;
 import com.sun.glass.events.KeyEvent;
 import javafx.application.Application;
 import javafx.stage.*;
@@ -15,6 +15,7 @@ import javafx.scene.control.*;
 
 public class Window extends Application {
 	
+	
 	private Circle circle, circle2;
 	private Scene scene;
 	private Text text;
@@ -25,6 +26,9 @@ public class Window extends Application {
 	private HBox menu;
 	private Button insert, delete, find;
 	private TextField toInsert, toDelete, toFind;
+	
+	
+	
 
 	@Override
 	public void start(Stage stage0) throws Exception {
@@ -107,7 +111,10 @@ public class Window extends Application {
 
 	//* Listener
 	   
-	  public class createNode implements EventHandler<ActionEvent>{
+	
+
+
+	public class createNode implements EventHandler<ActionEvent>{
 		public void handle(	ActionEvent add){
 			System.out.println("Huevos");
 			

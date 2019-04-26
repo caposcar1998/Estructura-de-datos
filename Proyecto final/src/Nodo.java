@@ -1,3 +1,4 @@
+import javafx.scene.shape.Circle;
 
 public class Nodo<T extends Comparable<T>> {
 	
@@ -5,6 +6,7 @@ public class Nodo<T extends Comparable<T>> {
 	private Nodo<T> izquierda;
 	private Nodo<T> derecha;
 	private int altura;
+	private Circle circle;
 	
 	public Nodo(T elemento) {
 		this.elemento=elemento;
@@ -37,6 +39,12 @@ public class Nodo<T extends Comparable<T>> {
 	}
 	public void setAltura(int altura) {
 		this.altura = altura;
+	}
+	public Circle getCircle() {
+		return circle;
+	}
+	public void setCircle(Circle circle) {
+		this.circle = circle;
 	}
 	
 

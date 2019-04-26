@@ -45,7 +45,7 @@ public class Avl<T extends Comparable<T>> {
 		return raiz;
 	}
 	
-	private Nodo<T> rotaSimpleALaIzquierda(Nodo<T> raiz){
+	public Nodo<T> rotaSimpleALaIzquierda(Nodo<T> raiz){
 		Nodo<T> temp= raiz.getDerecha();
 		raiz.setDerecha(temp.getIzquierda());
 		temp.setIzquierda(raiz);
@@ -53,7 +53,7 @@ public class Avl<T extends Comparable<T>> {
 		temp.setAltura(max(altura(temp.getDerecha()),altura(raiz))+1);
 		return temp;
 	}
-	private Nodo<T> rotaSimpleALaDerecha(Nodo<T> raiz){
+	public Nodo<T> rotaSimpleALaDerecha(Nodo<T> raiz){
 		Nodo<T> temp= raiz.getIzquierda();
 		raiz.setIzquierda(temp.getDerecha());
 		temp.setDerecha(raiz);
@@ -62,15 +62,15 @@ public class Avl<T extends Comparable<T>> {
 		return temp;
 	}	
 	
-	private Nodo<T> rotarDobleALaIzquierda(Nodo<T> raiz){
+	public Nodo<T> rotarDobleALaIzquierda(Nodo<T> raiz){
 		raiz.setDerecha(rotaSimpleALaDerecha(raiz.getDerecha()));
 		return rotaSimpleALaIzquierda(raiz);
 	}
-	private Nodo<T> rotarDobleALaDerecha(Nodo<T> raiz){
+	public Nodo<T> rotarDobleALaDerecha(Nodo<T> raiz){
 		raiz.setIzquierda(rotaSimpleALaIzquierda(raiz.getIzquierda()));
 		return rotaSimpleALaDerecha(raiz);
 	}
-	private int max(int a, int b) {
+	public int max(int a, int b) {
 		if(a>b) {
 			return a;
 		}else {
@@ -78,7 +78,7 @@ public class Avl<T extends Comparable<T>> {
 		}
 	}
 	
-	private int altura(Nodo<T> nodo) {
+	public int altura(Nodo<T> nodo) {
 		if(nodo==null) {
 			return -1;
 		}else {
