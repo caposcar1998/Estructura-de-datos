@@ -1,4 +1,4 @@
-//import javax.swing.JTable;
+
 import com.sun.glass.events.KeyEvent;
 import javafx.application.Application;
 import javafx.stage.*;
@@ -26,6 +26,7 @@ public class Window extends Application {
 	private HBox menu;
 	private Button insert, delete, find;
 	private TextField toInsert, toDelete, toFind;
+	protected Avl <Integer> arbol = new Avl<>();
 	
 	
 	
@@ -54,6 +55,7 @@ public class Window extends Application {
 		
 		
 		//objetos dentro de panel root
+		/*
 		circle= new Circle();
 		circle.setCenterX(500.0f); 
 		circle.setCenterY(500.0f); 
@@ -77,7 +79,7 @@ public class Window extends Application {
 		
 		linea= new Line(circle.getCenterX(),circle.getCenterY(),circle2.getCenterX(),circle2.getCenterY());
 		linea.setId("linea");
-		
+		*/
 		//objetos dentro del menu
 		
 		insert= new Button("Insert");
@@ -91,11 +93,11 @@ public class Window extends Application {
 		toFind= new TextField(       );
 		
 		//añadir objetos a bases
-		
+		/*
 		root.getChildren().add(linea);
 		root.getChildren().add(circle);
 		root.getChildren().add(circle2);
-		
+		*/
 		menu.getChildren().add(insert);
 		menu.getChildren().add(toInsert);
 		menu.getChildren().add(delete);
@@ -116,7 +118,13 @@ public class Window extends Application {
 
 	public class createNode implements EventHandler<ActionEvent>{
 		public void handle(	ActionEvent add){
-			System.out.println("Huevos");
+			int x=0;
+			x=Integer.parseInt(toInsert.getText());
+			arbol.insertarElemento(x);
+			//Método que pone objetos dentro del panel
+			// este metodo tiene que recibir el nodo a insertar, no la raíz
+			arbol.ponerNodo(arbol.getRaiz(), root);
+			System.out.println(arbol.getRaiz().getElemento());
 			
 		}}
 	  

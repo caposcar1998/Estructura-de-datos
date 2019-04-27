@@ -1,4 +1,4 @@
-    
+import javafx.scene.layout.Pane;
 
 public class Avl<T extends Comparable<T>> {
 	private Nodo<T> raiz;
@@ -84,5 +84,28 @@ public class Avl<T extends Comparable<T>> {
 		}else {
 			return nodo.getAltura();
 		}
+	}
+	
+public void removerNodo(Nodo <T> nodo) {}
+	
+	public void encontrar(Nodo <T> nodo, T elemento) {}
+	
+	//Poner todos los objetos dentro del panel
+	
+	public void ponerNodo(Nodo <T> nodo, Pane pane) {
+		nodo.getCircle().setCenterX(50);
+		nodo.getCircle().setCenterY(50);
+		nodo.getLineaIzquierda().setStartX(nodo.getCircle().getCenterX());
+		nodo.getLineaIzquierda().setStartY(nodo.getCircle().getCenterY());
+		nodo.getLineaIzquierda().setEndX(0); //poner a siguiente nodo
+		nodo.getLineaIzquierda().setEndY(0); //poner a siguiente nodo
+		nodo.getLineaDerecha().setStartX(nodo.getCircle().getCenterX());
+		nodo.getLineaDerecha().setStartY(nodo.getCircle().getCenterY());
+		nodo.getLineaDerecha().setEndX(0);   //poner a siguiente nodo
+		nodo.getLineaDerecha().setEndY(0);   //poner a siguiente nodo
+		
+		pane.getChildren().add(nodo.getCircle());
+		pane.getChildren().add(nodo.getLineaDerecha());
+		pane.getChildren().add(nodo.getLineaIzquierda());
 	}
 }
