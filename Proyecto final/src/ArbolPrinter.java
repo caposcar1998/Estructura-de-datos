@@ -2,12 +2,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+
 public class ArbolPrinter<T extends Comparable<T>> {
 
     public void printNodo(Nodo<T> root) {
         int maxLevel = maxLevel(root);
 
-        printNodoInternal(Collections.singletonList(root), 1, maxLevel);
+       
+		printNodoInternal(Collections.singletonList(root), 1, maxLevel);
     }
 
     private void printNodoInternal(List<Nodo<T>> Nodos, int level, int maxLevel) {

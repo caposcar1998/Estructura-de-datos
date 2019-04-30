@@ -11,7 +11,12 @@ public class Nodo<T extends Comparable<T>> {
 	private Line lineaIzquierda;
 	private Line lineaDerecha;
 	
+	
+	
 	public Nodo(T elemento) {
+		this.circle=new Circle();
+		this.lineaIzquierda=new Line();
+		this.lineaDerecha= new Line();
 		this.elemento=elemento;
 	}
 	public T getElemento() {

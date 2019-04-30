@@ -4,7 +4,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		Application.launch(Window.class, args);
-		
+		/*
 		Avl <Integer>prueba = new Avl<>();
 		ArbolPrinter print = new ArbolPrinter();
 		
@@ -13,7 +13,7 @@ public class Main {
 		prueba.insertarElemento(15);
 		
 		print.printNodo(prueba.getRaiz());
-		
+		*/
 		//System.out.println(prueba.getRaiz().getElemento());
 		
 		
