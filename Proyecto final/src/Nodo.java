@@ -1,5 +1,6 @@
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
+import javafx.scene.text.Text;
 
 public class Nodo<T extends Comparable<T>> {
 	
@@ -10,13 +11,14 @@ public class Nodo<T extends Comparable<T>> {
 	private Circle circle;
 	private Line lineaIzquierda;
 	private Line lineaDerecha;
-	
+	private Text texto;
 	
 	
 	public Nodo(T elemento) {
 		this.circle=new Circle();
 		this.lineaIzquierda=new Line();
 		this.lineaDerecha= new Line();
+		this.texto=new Text();
 		this.elemento=elemento;
 	}
 	public T getElemento() {
@@ -65,6 +67,12 @@ public class Nodo<T extends Comparable<T>> {
 	}
 	public void setLineaDerecha(Line lineaDerecha) {
 		this.lineaDerecha = lineaDerecha;
+	}
+	public Text getTexto() {
+		return texto;
+	}
+	public void setTexto(Text texto) {
+		this.texto = texto;
 	}
 	
 

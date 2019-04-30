@@ -1,5 +1,7 @@
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
+import javafx.scene.text.Text;
 
 public class Avl<T extends Comparable<T>> {
 	private Nodo<T> raiz;
@@ -197,6 +199,8 @@ public class Avl<T extends Comparable<T>> {
 	
 	//Poner todos los objetos dentro del panel
 	
+	//Ejemplo de como poner un nodo
+	
 	public void ponerNodo(Nodo <T> nodo, Pane pane) {
 		
 		System.out.println();
@@ -204,7 +208,13 @@ public class Avl<T extends Comparable<T>> {
 		System.out.println(nodo.getCircle());
 		System.out.println(nodo.getLineaDerecha());
 		System.out.println();
-	
+		
+		Text texto= new Text("5");
+		nodo.setTexto(texto);
+		nodo.getTexto().setX(nodo.getCircle().getCenterX()+30);
+		nodo.getTexto().setY(nodo.getCircle().getCenterY()+50);
+		nodo.getCircle().setFill(Color.TRANSPARENT);
+		nodo.getCircle().setStroke(Color.BLACK);
 		nodo.getCircle().setRadius(50);
 		nodo.getCircle().setCenterX(50);
 		nodo.getCircle().setCenterY(50);
@@ -217,8 +227,10 @@ public class Avl<T extends Comparable<T>> {
 		nodo.getLineaDerecha().setEndX(200);   //poner a siguiente nodo
 		nodo.getLineaDerecha().setEndY(200);   //poner a siguiente nodo
 		
+		pane.getChildren().add(nodo.getTexto());
 		pane.getChildren().add(nodo.getCircle());
 		pane.getChildren().add(nodo.getLineaDerecha());
 		pane.getChildren().add(nodo.getLineaIzquierda());
 	}
+	
 }

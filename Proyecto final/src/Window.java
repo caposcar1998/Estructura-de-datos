@@ -20,14 +20,15 @@ public class Window extends Application {
 	private Scene scene;
 	private Text text;
 	private StackPane stack;
-	private Pane root, base;
+	private Pane base;
+	public Pane canvas= new Pane();
 	private Line linea;
 	private VBox everything;
 	private HBox menu;
 	private Button insert, delete, find;
 	private TextField toInsert, toDelete, toFind;
 	protected Avl <Integer> arbol = new Avl<>();
-	
+	protected ArbolPrinter print= new ArbolPrinter<>();
 	
 	
 
@@ -49,7 +50,7 @@ public class Window extends Application {
 		everything= new VBox(2);
 		base= new Pane(everything);
 		scene= new Scene(base,1000,1000);
-		root = new Pane();
+		
 	
 	
 		
@@ -105,7 +106,7 @@ public class Window extends Application {
 		menu.getChildren().add(find);
 		menu.getChildren().add(toFind);
 		
-		everything.getChildren().addAll(menu,root);
+		everything.getChildren().addAll(menu,canvas);
 		
 		stage0.setScene(scene);
 	}
@@ -123,7 +124,7 @@ public class Window extends Application {
 			arbol.insertarElemento(x);
 			//Método que pone objetos dentro del panel
 			// este metodo tiene que recibir el nodo a insertar, no la raíz
-			arbol.ponerNodo(arbol.getRaiz(), root);
+			arbol.ponerNodo(arbol.getRaiz(), canvas);
 			System.out.println(arbol.getRaiz().getElemento());
 			
 		}}
