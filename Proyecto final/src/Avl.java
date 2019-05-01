@@ -202,21 +202,21 @@ public class Avl<T extends Comparable<T>> {
 	//Ejemplo de como poner un nodo
 	
 	public void ponerNodo(Nodo <T> nodo, Pane pane) {
-		
+		String poner=String.valueOf(nodo.getElemento());
 		System.out.println();
 		System.out.println(nodo.getElemento());
 		System.out.println(nodo.getCircle());
 		System.out.println(nodo.getLineaDerecha());
 		System.out.println();
 		
-		Text texto= new Text("5");
+		Text texto= new Text(poner);
 		nodo.setTexto(texto);
-		nodo.getTexto().setX(nodo.getCircle().getCenterX()+30);
-		nodo.getTexto().setY(nodo.getCircle().getCenterY()+50);
+		nodo.getTexto().setX(nodo.getCircle().getCenterX());
+		nodo.getTexto().setY(nodo.getCircle().getCenterY());
 		nodo.getCircle().setFill(Color.TRANSPARENT);
 		nodo.getCircle().setStroke(Color.BLACK);
 		nodo.getCircle().setRadius(50);
-		nodo.getCircle().setCenterX(50);
+		nodo.getCircle().setCenterX(500);
 		nodo.getCircle().setCenterY(50);
 		nodo.getLineaIzquierda().setStartX(nodo.getCircle().getCenterX());
 		nodo.getLineaIzquierda().setStartY(nodo.getCircle().getCenterY());
