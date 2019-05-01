@@ -85,7 +85,7 @@ public class Window extends Application {
 			//arbol.ponerNodo(arbol.getRaiz(), canvas);
 			System.out.println(arbol.getRaiz().getElemento());
 			print.printNodo(arbol.getRaiz(), canvas);
-			
+			toInsert.setText(null);
 			
 		}}
 	  

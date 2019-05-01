@@ -9,8 +9,9 @@ import javafx.scene.text.Text;
 
 
 public class ArbolPrinter<T extends Comparable<T>> {
-	Nodo<T> temp;
+	
 	Pane pane;
+	Nodo<T> grafico;
 	
     public void printNodo(Nodo<T> root, Pane pane) {
         int maxLevel = maxLevel(root);
@@ -34,21 +35,31 @@ public class ArbolPrinter<T extends Comparable<T>> {
         for (Nodo<T> Nodo : Nodos) {
             if (Nodo != null) {
                 System.out.print(Nodo.getElemento());
-                
+                grafico=Nodo;
                 //Poner nodo en canvas
-                Nodo.getCircle().setFill(Color.TRANSPARENT);
-                Nodo.getCircle().setStroke(Color.BLACK);
-                Nodo.getCircle().setRadius(50);
-                Nodo.getCircle().setCenterX(500);
-                Nodo.getCircle().setCenterY(50);
+                grafico.getCircle().setFill(Color.TRANSPARENT);
+                grafico.getCircle().setStroke(Color.BLACK);
+                grafico.getCircle().setRadius(50);
+                grafico.getCircle().setCenterX(500);
+                grafico.getCircle().setCenterY(50);
                 //Poner texto en nodo
                 String poner=String.valueOf(Nodo.getElemento());
                 Text texto= new Text(poner);
         		Nodo.setTexto(texto);
-        		Nodo.getTexto().setX(Nodo.getCircle().getCenterX());
-        		Nodo.getTexto().setY(Nodo.getCircle().getCenterY());
-                pane.getChildren().add(Nodo.getCircle());
-                pane.getChildren().add(Nodo.getTexto());
+        		grafico.getTexto().setX(Nodo.getCircle().getCenterX());
+        		grafico.getTexto().setY(Nodo.getCircle().getCenterY());
+        		grafico.getLineaIzquierda().setStartX(grafico.getCircle().getCenterX());
+                grafico.getLineaIzquierda().setStartY(grafico.getCircle().getCenterY());
+                grafico.getLineaIzquierda().setEndX(100);
+                grafico.getLineaIzquierda().setEndY(100);
+        		grafico.getLineaDerecha().setStartX(grafico.getCircle().getCenterX());
+        		grafico.getLineaDerecha().setStartY(grafico.getCircle().getCenterY());
+                grafico.getLineaDerecha().setEndX(800);
+                grafico.getLineaDerecha().setEndY(100);
+                pane.getChildren().add(grafico.getLineaDerecha());
+        		pane.getChildren().add(grafico.getLineaIzquierda());
+                pane.getChildren().add(grafico.getCircle());
+                pane.getChildren().add(grafico.getTexto());
                 
                 newNodos.add(Nodo.getIzquierda());
                 newNodos.add(Nodo.getDerecha());
@@ -72,11 +83,14 @@ public class ArbolPrinter<T extends Comparable<T>> {
 
                 if (Nodos.get(j).getIzquierda() != null) {
                     System.out.print("/");
+                  
                     //No hace nada
-                	temp.getLineaIzquierda().setStartX(temp.getCircle().getCenterX());
-            		temp.getLineaIzquierda().setStartY(temp.getCircle().getCenterY());
-                	temp.getLineaIzquierda().setEndX(0);
-                	temp.getLineaIzquierda().setEndY(0);
+                    grafico.getLineaIzquierda().setStartX(grafico.getCircle().getCenterX());
+                    grafico.getLineaIzquierda().setStartY(grafico.getCircle().getCenterY());
+                    grafico.getLineaIzquierda().setEndX(110);
+                    grafico.getLineaIzquierda().setEndY(110);
+                    System.out.println(grafico.getLineaIzquierda());
+                	pane.getChildren().add(grafico.getLineaIzquierda());
                 
                 }else
                     ArbolPrinter.printWhitespaces(1);
