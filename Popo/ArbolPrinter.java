@@ -1,29 +1,16 @@
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Line;
-import javafx.scene.text.Text;
-
-
 public class ArbolPrinter<T extends Comparable<T>> {
 
-	Pane pane;
-	Avl usar;
-
-    public void printNodo(Nodo<T> root, Pane pane) {
-    	System.out.println("Aqui entra");
+    public void printNodo(Nodo<T> root) {
         int maxLevel = maxLevel(root);
 
-
-		printNodoInternal(Collections.singletonList(root), 1, maxLevel, pane);
+        printNodoInternal(Collections.singletonList(root), 1, maxLevel);
     }
 
-    private void printNodoInternal(List<Nodo<T>> Nodos, int level, int maxLevel, Pane pane) {
+    private void printNodoInternal(List<Nodo<T>> Nodos, int level, int maxLevel) {
         if (Nodos.isEmpty() || isAllElementsNull(Nodos))
             return;
 
@@ -37,70 +24,7 @@ public class ArbolPrinter<T extends Comparable<T>> {
         List<Nodo<T>> newNodos = new ArrayList<Nodo<T>>();
         for (Nodo<T> Nodo : Nodos) {
             if (Nodo != null) {
-            	System.out.println(maxLevel);
-            	if(maxLevel==1) {
-            		
-            		String poner=String.valueOf(Nodo.getElemento());
-                    Text text= new Text(poner);
-                    Circle circle= new Circle();
-                    Line izquierda= new Line();
-                    Line derecha= new Line();
-                    circle.setRadius(50);
-                    circle.setCenterX(500);
-                    circle.setCenterY(50);
-                    circle.setFill(Color.TRANSPARENT);
-                    circle.setStroke(Color.BLACK);
-                    text.setX(circle.getCenterX());
-                    text.setY(circle.getCenterY());
-                    
-                    izquierda.setStartX(circle.getCenterX());
-                    izquierda.setStartY(circle.getCenterY());
-                    izquierda.setEndX(50);
-                    izquierda.setEndY(100);
-                    derecha.setStartX(circle.getCenterX());
-                    derecha.setStartY(circle.getCenterY());
-                    derecha.setEndX(800);
-                    derecha.setEndY(100);
-                    
-                    pane.getChildren().add(derecha);
-                    pane.getChildren().add(izquierda);
-                    pane.getChildren().add(text);
-                    pane.getChildren().add(circle);
-                    
-            		
-            	}	else {
-            		String poner=String.valueOf(Nodo.getElemento());
-                    Text text= new Text(poner);
-                    Circle circle= new Circle();
-                    Line izquierda= new Line();
-                    Line derecha= new Line();
-                    circle.setRadius(50);
-                    circle.setCenterX(50);
-                    circle.setCenterY(250);
-                    circle.setFill(Color.TRANSPARENT);
-                    circle.setStroke(Color.BLACK);
-                    text.setX(circle.getCenterX());
-                    text.setY(circle.getCenterY());
-                    
-                    izquierda.setStartX(circle.getCenterX());
-                    izquierda.setStartY(circle.getCenterY());
-                    izquierda.setEndX(50);
-                    izquierda.setEndY(100);
-                    derecha.setStartX(circle.getCenterX());
-                    derecha.setStartY(circle.getCenterY());
-                    derecha.setEndX(800);
-                    derecha.setEndY(100);
-                    
-                    pane.getChildren().add(derecha);
-                    pane.getChildren().add(izquierda);
-                    pane.getChildren().add(text);
-                    pane.getChildren().add(circle);
-            	}
-            	
                 System.out.print(Nodo.getElemento());
-                
-                
-
                 newNodos.add(Nodo.getIzquierda());
                 newNodos.add(Nodo.getDerecha());
             } else {
@@ -121,21 +45,16 @@ public class ArbolPrinter<T extends Comparable<T>> {
                     continue;
                 }
 
-                if (Nodos.get(j).getIzquierda() != null) {
+                if (Nodos.get(j).getIzquierda() != null)
                     System.out.print("/");
-                    
-					
-                  
-
-                }else
+                else
                     ArbolPrinter.printWhitespaces(1);
 
                 ArbolPrinter.printWhitespaces(i + i - 1);
 
-                if (Nodos.get(j).getDerecha() != null) {
+                if (Nodos.get(j).getDerecha() != null)
                     System.out.print("\\");
-
-                }else
+                else
                     ArbolPrinter.printWhitespaces(1);
 
                 ArbolPrinter.printWhitespaces(endgeLines + endgeLines - i);
@@ -144,7 +63,7 @@ public class ArbolPrinter<T extends Comparable<T>> {
             System.out.println("");
         }
 
-        printNodoInternal(newNodos, level + 1, maxLevel, pane);
+        printNodoInternal(newNodos, level + 1, maxLevel);
     }
 
     private static void printWhitespaces(int count) {

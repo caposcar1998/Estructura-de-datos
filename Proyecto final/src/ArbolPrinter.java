@@ -41,8 +41,8 @@ public class ArbolPrinter<T extends Comparable<T>> {
                 grafico.getCircle().setFill(Color.TRANSPARENT);
                 grafico.getCircle().setStroke(Color.BLACK);
                 grafico.getCircle().setRadius(50);
-                grafico.getCircle().setCenterX(500);
-                grafico.getCircle().setCenterY(50);
+                grafico.getCircle().setCenterX(pane.getWidth()/2);
+                grafico.getCircle().setCenterY((floor*50)+100);
                 String poner=String.valueOf(grafico.getElemento());
                 Text texto= new Text(poner);
         		grafico.setTexto(texto);
