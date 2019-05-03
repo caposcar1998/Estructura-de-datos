@@ -46,8 +46,8 @@ public class ArbolPrinter<T extends Comparable<T>> {
                     Line izquierda= new Line();
                     Line derecha= new Line();
                     circle.setRadius(50);
-                    circle.setCenterX(50);
-                    circle.setCenterY(250);
+                    circle.setCenterX(500);
+                    circle.setCenterY(50);
                     circle.setFill(Color.TRANSPARENT);
                     circle.setStroke(Color.BLACK);
                     text.setX(circle.getCenterX());
