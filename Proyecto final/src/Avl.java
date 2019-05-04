@@ -197,40 +197,7 @@ public class Avl<T extends Comparable<T>> {
 	
 	public void encontrar(Nodo <T> nodo, T elemento) {}
 	
-	//Poner todos los objetos dentro del panel
-	
-	//Ejemplo de como poner un nodo
-	
-	public void ponerNodo(Nodo <T> nodo, Pane pane) {
-		String poner=String.valueOf(nodo.getElemento());
-		System.out.println();
-		System.out.println(nodo.getElemento());
-		System.out.println(nodo.getCircle());
-		System.out.println(nodo.getLineaDerecha());
-		System.out.println();
-		
-		Text texto= new Text(poner);
-		nodo.setTexto(texto);
-		nodo.getTexto().setX(nodo.getCircle().getCenterX());
-		nodo.getTexto().setY(nodo.getCircle().getCenterY());
-		nodo.getCircle().setFill(Color.TRANSPARENT);
-		nodo.getCircle().setStroke(Color.BLACK);
-		nodo.getCircle().setRadius(50);
-		nodo.getCircle().setCenterX(500);
-		nodo.getCircle().setCenterY(50);
-		nodo.getLineaIzquierda().setStartX(nodo.getCircle().getCenterX());
-		nodo.getLineaIzquierda().setStartY(nodo.getCircle().getCenterY());
-		nodo.getLineaIzquierda().setEndX(0); //poner a siguiente nodo
-		nodo.getLineaIzquierda().setEndY(0); //poner a siguiente nodo
-		nodo.getLineaDerecha().setStartX(nodo.getCircle().getCenterX());
-		nodo.getLineaDerecha().setStartY(nodo.getCircle().getCenterY());
-		nodo.getLineaDerecha().setEndX(200);   //poner a siguiente nodo
-		nodo.getLineaDerecha().setEndY(200);   //poner a siguiente nodo
-		
-		pane.getChildren().add(nodo.getTexto());
-		pane.getChildren().add(nodo.getCircle());
-		pane.getChildren().add(nodo.getLineaDerecha());
-		pane.getChildren().add(nodo.getLineaIzquierda());
-	}
+
+
 	
 }

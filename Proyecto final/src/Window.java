@@ -79,8 +79,18 @@ public class Window extends Application {
 		public void handle(	ActionEvent add){
 			canvas.getChildren().clear();
 			int x=0;
+			try {
 			x=Integer.parseInt(toInsert.getText());
 			arbol.insertarElemento(x);
+			}catch(java.lang.NumberFormatException nf) {
+				String palabra=toInsert.getText();
+				int count=0;
+			    for(int i = 0; i < palabra.length(); i++) {    
+		            if(palabra.charAt(i) != ' ')    
+		                count++;    
+		        }
+			    arbol.insertarElemento(count);
+			}
 			//Método que pone objetos dentro del panel
 			// este metodo tiene que recibir el nodo a insertar, no la raíz
 			//arbol.ponerNodo(arbol.getRaiz(), canvas);
