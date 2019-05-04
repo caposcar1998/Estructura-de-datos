@@ -10,6 +10,7 @@ public class Nodo<T extends Comparable<T>> {
 	private int altura;
 
 
+
 	public Nodo(T elemento) {
 		this.elemento=elemento;
 	}

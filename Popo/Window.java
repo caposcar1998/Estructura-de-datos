@@ -20,7 +20,7 @@ public class Window extends Application {
 	private Button insert, delete, find;
 	private TextField toInsert, toDelete, toFind;
 	protected Avl <Integer> arbol = new Avl<>();
-	protected ArbolPrinter print= new ArbolPrinter<>();
+	protected GuiPrint print= new GuiPrint<>();
 
 
 
@@ -78,6 +78,7 @@ public class Window extends Application {
 
 	public class createNode implements EventHandler<ActionEvent>{
 		public void handle(	ActionEvent add){
+		canvas.getChildren().clear();
 			int x=0;
 			x=Integer.parseInt(toInsert.getText());
 			arbol.insertarElemento(x);
