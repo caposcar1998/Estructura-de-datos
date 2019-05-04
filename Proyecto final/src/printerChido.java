@@ -9,8 +9,7 @@ import javafx.scene.text.Text;
 
 public class printerChido<T extends Comparable<T>> {
 	
-	Pane pane;
-	Nodo<T> nodito;
+	
 	
 	public void pintarArbol(Nodo<T> root, Pane pane, int x, int y) {
 		
@@ -20,19 +19,35 @@ public class printerChido<T extends Comparable<T>> {
         root.getCircle().setRadius(50);
         root.getCircle().setCenterX(x);
         root.getCircle().setCenterY(y);
+       
+       
+        
         String poner=String.valueOf(root.getElemento());
         Text texto= new Text(poner);
 		root.setTexto(texto);
 		root.getTexto().setX(root.getCircle().getCenterX());
 		root.getTexto().setY(root.getCircle().getCenterY());
 		
+		
+		
 		pane.getChildren().add(root.getCircle());
         pane.getChildren().add(root.getTexto());
         if(root.getDerecha()!=null) {
         	pintarArbol(root.getDerecha(), pane, x+250, y+100);
+        	 root.getLineaDerecha().setStartX(x);
+             root.getLineaDerecha().setStartY(y);
+             root.getLineaDerecha().setEndX(x+200);
+             root.getLineaDerecha().setEndY(y+100);
+             pane.getChildren().add(root.getLineaDerecha());
+        	
         }
         if(root.getIzquierda()!=null) {
         	pintarArbol(root.getIzquierda(), pane, x-150, y+100);
+        	 root.getLineaIzquierda().setStartX(x);
+             root.getLineaIzquierda().setStartY(y);
+             root.getLineaIzquierda().setEndX(x-200);
+             root.getLineaIzquierda().setEndY(y+100);
+             pane.getChildren().add(root.getLineaIzquierda());
         }
 	}
 	

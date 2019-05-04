@@ -78,6 +78,7 @@ public class Window extends Application {
 	public class createNode implements EventHandler<ActionEvent>{
 		public void handle(	ActionEvent add){
 			canvas.getChildren().clear();
+			 
 			int x=0;
 			try {
 			x=Integer.parseInt(toInsert.getText());
