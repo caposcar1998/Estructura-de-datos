@@ -94,112 +94,76 @@ public class Avl<T extends Comparable<T>> {
 	}
   
 	public Nodo <T> nodoMenor(Nodo <T> node){  
-		Nodo <T> actual = node;  
-		/* loop down to find the leftmost leaf */
-		while (actual.getIzquierda() != null)  
-			actual = actual.getIzquierda();  
-
-		return actual;  
-  }
-  	public int getBalance(Nodo <T> N){  
-  		if (N == null)  
-        return 0;  
-  		return altura(N.getIzquierda()) - altura(N.getDerecha());  
-  }  
+    Nodo <T> nodoActual = node;
+    while (nodoActual.getIzquierda() != null) {  
+    nodoActual = nodoActual.getIzquierda();  
+    }
+    return nodoActual;  
+	}
   
-	public Nodo<T> eliminarRecursivo(T elemento, Nodo<T> raiz)  {  
-        // STEP 1: PERFORM STANDARD BST DELETE  
+	public int getBalance(Nodo <T> N){  
+	    if (N == null) {
+	        return 0;
+	    }
+    return altura(N.getIzquierda()) - altura(N.getDerecha());  
+	}  
+  
+	public Nodo<T> eliminarRecursivo(T elemento, Nodo<T> raiz)  {
         if (raiz == null) {
             return raiz;  
         }
-        // If the elemento to be deleted is smaller than  
-        // the raiz's elemento, then it lies in left subtree  
         if (elemento.compareTo(raiz.getElemento())<0) {
             raiz.setIzquierda(eliminarRecursivo(elemento, raiz.getIzquierda()));
-            }
-  
-        // If the elemento to be deleted is greater than the  
-        // raiz's elemento, then it lies in right subtree  
+            } 
         else if (elemento.compareTo(raiz.getElemento())>0) {
             raiz.setDerecha(eliminarRecursivo(elemento,raiz.getDerecha()));
-        }
-  
-        // if elemento is same as raiz's elemento, then this is the node  
-        // to be deleted  
-        else{  
-  
-            // node with only one child or no child  
+        } 
+        else{
             if ((raiz.getIzquierda() == null) || (raiz.getDerecha() == null)){  
                 Nodo<T> temp = null;  
                 if (temp == raiz.getIzquierda()) { 
                     temp = raiz.getDerecha();  
                 }else {
                     temp = raiz.getIzquierda();  
-  
-                // No child case  
                 }if (temp == null){  
                     temp = raiz;  
                     raiz = null;  
                 }  
-                else { // One child case  
-                    raiz = temp; // Copy the contents of  
-                                // the non-empty child  
+                else { 
+                    raiz = temp; 
                 }
             }  
             else
             {  
-  
-                // node with two children: Get the inorder  
-                // successor (smallest in the right subtree)  
                 Nodo<T> temp = nodoMenor(raiz.getDerecha());  
-  
-                // Copy the inorder successor's data to this node  
                 raiz.setElemento(temp.getElemento());  
-  
-                // Delete the inorder successor  
                 raiz.setDerecha(eliminarRecursivo(temp.getElemento(),raiz.getDerecha()));  
             }  
-        }  
-  
-        // If the tree had only one node then return  
-        if (raiz == null)  
-            return raiz;  
-  
-        // STEP 2: UPDATE HEIGHT OF THE CURRENT NODE  
+        }
+        if (raiz == null) { 
+            return raiz;
+        }
         raiz.setAltura(max(altura(raiz.getIzquierda()),altura(raiz.getDerecha()))+1);
-  
-        // STEP 3: GET THE BALANCE FACTOR OF THIS NODE (to check whether  
-        // this node became unbalanced)  
         int balance = getBalance(raiz);
-  
-        // If this node becomes unbalanced, then there are 4 cases  
-        // Left Left Case  
-        if (balance > 1 && getBalance(raiz.getIzquierda()) >= 0)  
+        
+        // Rotacion simple derecha (en linea 3 nodos izquierda)
+        if (balance > 1 && getBalance(raiz.getIzquierda()) >= 0){
             return rotaSimpleALaDerecha(raiz);  
-  
-        // Left Right Case  
-        if (balance > 1 && getBalance(raiz.getIzquierda()) < 0)  
-        {  
+        }
+        // Rotación doble a la derecha (2 izquierda 1 derecha)
+        if (balance > 1 && getBalance(raiz.getIzquierda()) < 0){  
           return rotarDobleALaDerecha(raiz);
         }  
-  
-        // Right Right Case  
-        if (balance < -1 && getBalance(raiz.getDerecha()) <= 0)  
-            return rotaSimpleALaIzquierda(raiz);  
-  
-        // Right Left Case  
-        if (balance < -1 && getBalance(raiz.getDerecha()) > 0)  
-        {  
+        // Rotación simple a la izquierda (en linea 3 nodos derecha)
+        if (balance < -1 && getBalance(raiz.getDerecha()) <= 0) { 
+            return rotaSimpleALaIzquierda(raiz);
+        }
+        // Rotación doble a la izquierda  (2 derecha 1 izquierda)
+        if (balance < -1 && getBalance(raiz.getDerecha()) > 0){  
             return rotarDobleALaIzquierda(raiz);
         }
         return raiz;  
-    } 
-	
-	public void encontrar(Nodo <T> nodo, T elemento) {}
-	
-
-	
-	//recorridos
+    }  
 	
 	public void recorreEnPreOrden() {
 		recorreEnPreOrdenRec(raiz);
