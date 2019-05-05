@@ -104,7 +104,23 @@ public class Window extends Application {
 	  
 	  public class deleteNode implements EventHandler<ActionEvent>{
 			public void handle(	ActionEvent add){
-				
+				canvas.getChildren().clear();
+				int x=0;
+				try {
+				x=Integer.parseInt(toDelete.getText());
+				arbol.eliminarElemento(x);
+				}catch(java.lang.NumberFormatException nf) {
+					String palabra=toInsert.getText();
+					int count=0;
+				    for(int i = 0; i < palabra.length(); i++) {    
+			            if(palabra.charAt(i) != ' ')    
+			                count++;    
+			        }
+				    arbol.eliminarElemento(count);
+				}
+				System.out.println(arbol.getRaiz().getElemento());
+				print.pintarArbol(arbol.getRaiz(), canvas, 500, 100);
+				toInsert.setText(null);
 			}}
 	  
 	  public class findNode implements EventHandler<ActionEvent>{
