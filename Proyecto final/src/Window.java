@@ -98,17 +98,21 @@ public class Window extends Application {
 			System.out.println(arbol.getRaiz().getElemento());
 			print.pintarArbol(arbol.getRaiz(), canvas, 500, 100);
 			toInsert.setText(null);
+		
 			
 		}}
 	  
 	  public class deleteNode implements EventHandler<ActionEvent>{
 			public void handle(	ActionEvent add){
-				System.out.println("Huevos");
+				
 			}}
 	  
 	  public class findNode implements EventHandler<ActionEvent>{
 			public void handle(	ActionEvent add){
-				System.out.println("Huevos");
+				int x=0;
+				x=Integer.parseInt(toFind.getText());
+				arbol.recorreEnPostOrden(x, canvas);
+				toFind.clear();
 			}}
 	  
 	  

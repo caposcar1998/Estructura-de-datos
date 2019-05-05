@@ -198,6 +198,84 @@ public class Avl<T extends Comparable<T>> {
 	public void encontrar(Nodo <T> nodo, T elemento) {}
 	
 
+	
+	//recorridos
+	
+	public void recorreEnPreOrden() {
+		recorreEnPreOrdenRec(raiz);
+	}
+	
+	private void recorreEnPreOrdenRec(Nodo<T> nodo) {
+		if(nodo!=null) {
+			System.out.print(nodo.getElemento().toString()+", ");
+			recorreEnPreOrdenRec(nodo.getIzquierda());
+			recorreEnPreOrdenRec(nodo.getDerecha());
+		}
+	}
+	public void recorreEnInOrden() {
+		recorreEnInOrdenRec(raiz);
+	}
+	
+	private void recorreEnInOrdenRec(Nodo<T> nodo) {
+		if(nodo!=null) {
+			recorreEnInOrdenRec(nodo.getIzquierda());
+			System.out.print(nodo.getElemento().toString()+", ");
+			recorreEnInOrdenRec(nodo.getDerecha());
+		}
+	}
+	public void recorreEnPostOrden(T x, Pane pane) {
+		recorreEnPostOrdenRec(raiz, x, pane);
+	
+	}
+	
+	private void recorreEnPostOrdenRec(Nodo<T> nodo, T x, Pane pane) {
+		if(nodo!=null) {
+			recorreEnPostOrdenRec(nodo.getIzquierda(),x, pane);
+			recorreEnPostOrdenRec(nodo.getDerecha(),x, pane);
+
+			System.out.print(nodo.getElemento().toString()+", ");
+			if(nodo.getElemento()==x) {
+				nodo.getCircle().setStroke(Color.DARKRED);
+				
+				new java.util.Timer().schedule( 
+				        new java.util.TimerTask() {
+				            @Override
+				            public void run() {
+				               nodo.getCircle().setStroke(Color.BLACK);
+				            }
+				        }, 
+				        5000 
+				);
+				
+				
+			}
+			
+		}
+			
+		
+	}	
+	
+	
+	/*
+	public T printPostorder(Nodo<T> node) 
+    { 
+        if (node == null) 
+            return node.getElemento(); 
+  
+        // first recur on left subtree 
+        printPostorder(node.getIzquierda()); 
+  
+        // then recur on right subtree 
+        printPostorder(node.getDerecha()); 
+  
+        // now deal with the node 
+        System.out.print(node.getElemento() + " ");
+		return node.getElemento(); 
+    } 
+	*/
+	
+	
+
 
 	
 }
