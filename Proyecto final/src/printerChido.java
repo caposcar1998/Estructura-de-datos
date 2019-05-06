@@ -19,14 +19,16 @@ public class printerChido<T extends Comparable<T>> {
     
     private void trazarLinea(Nodo<T>root, Pane pane, double pointX, double pointY, double distanceX) {
 		if(root!=null) {
-		root.getCircle().setFill(Color.TRANSPARENT);
+		root.getCircle().setFill(Color.BLACK);
         root.getCircle().setStroke(Color.BLACK);
+        root.getCircle().setStrokeWidth(5);
         root.getCircle().setRadius(25);
         root.getCircle().setCenterX(pointX);
         root.getCircle().setCenterY(pointY);
        
         String poner=String.valueOf(root.getElemento());
         Text texto= new Text(poner);
+        texto.setFill(Color.ANTIQUEWHITE);
 		root.setTexto(texto);
 		root.getTexto().setX(root.getCircle().getCenterX());
 		root.getTexto().setY(root.getCircle().getCenterY());
