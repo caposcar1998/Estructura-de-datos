@@ -20,6 +20,7 @@ public class Window extends Application {
 	private TextField toInsert, toDelete, toFind;
 	protected Avl <String> arbol = new Avl<>();
 	protected printerChido print= new printerChido<>();
+	protected PrinterChafa printF = new PrinterChafa<>();
 	
 	
 
@@ -78,52 +79,54 @@ public class Window extends Application {
 	public class createNode implements EventHandler<ActionEvent>{
 		public void handle(	ActionEvent add){
 			canvas.getChildren().clear();
-			 
-			String x;
 			try {
-			x=toInsert.getText().toString();
-			arbol.insertarElemento(x);
-			}catch(java.lang.NumberFormatException nf) {
-				String palabra=toInsert.getText();
-				int count=0;
-				try {
-			    for(int i = 0; i < palabra.length(); i++) {    
-		            if(palabra.charAt(i) != ' ')    
-		                count++;    
-		        }}catch(java.lang.NullPointerException jN) {}
-			    arbol.insertarElemento(Integer.toString(count));
-			}
-			//Método que pone objetos dentro del panel
-			// este metodo tiene que recibir el nodo a insertar, no la raíz
-			//arbol.ponerNodo(arbol.getRaiz(), canvas);
-			System.out.println(arbol.getRaiz().getElemento());
-			print.pintarArbol(arbol.getRaiz(), canvas, 500, 100);
-			toInsert.setText(null);
-		
+				
+
+				String x=toInsert.getText().toString();
+				if(x!=null) {
+					arbol.insertarElemento(x);
+					System.out.println(arbol.getRaiz().getElemento());
+					print.pintarArbol(arbol.getRaiz(), canvas, 500, 100);
+					toInsert.setText(null);
+					printF.printNodo(arbol.getRaiz());
+				
+				}
+				
+		       
+	        }catch(java.lang.NullPointerException jN) {
+				canvas.getChildren().clear();
+				print.pintarArbol(arbol.getRaiz(), canvas, 500, 100);
+				printF.printNodo(arbol.getRaiz());
+
+        }
 			
 		}}
 	  
 	  public class deleteNode implements EventHandler<ActionEvent>{
 			public void handle(	ActionEvent add){
 				canvas.getChildren().clear();
-				String x;
 				try {
-				x=toDelete.getText().toString();
-				arbol.eliminarElemento(x);
-				}catch(java.lang.NumberFormatException nf) {
-					String palabra=toInsert.getText();
-					int count=0;
-					try {
-				    for(int i = 0; i < palabra.length(); i++) {    
-			            if(palabra.charAt(i) != ' ')    
-			                count++;    
-			        }}catch(java.lang.NullPointerException jN) {}
-				    arbol.eliminarElemento(Integer.toString(count));
-				}
-				System.out.println(arbol.getRaiz().getElemento());
-				print.pintarArbol(arbol.getRaiz(), canvas, 500, 100);
-				toInsert.setText(null);
-				toDelete.clear();
+					
+
+					String x=toDelete.getText().toString();
+					if(x!=null) {
+						arbol.eliminarElemento(x);
+						System.out.println(arbol.getRaiz().getElemento());
+						print.pintarArbol(arbol.getRaiz(), canvas, 500, 100);
+						printF.printNodo(arbol.getRaiz());
+						toDelete.setText(null);
+					
+					}
+					
+			       
+		        }catch(java.lang.NullPointerException jN) {
+					canvas.getChildren().clear();
+					print.pintarArbol(arbol.getRaiz(), canvas, 500, 100);
+					printF.printNodo(arbol.getRaiz());
+					toDelete.setText(null);
+	        }
+				
+				
 			}}
 	  
 	  public class findNode implements EventHandler<ActionEvent>{
