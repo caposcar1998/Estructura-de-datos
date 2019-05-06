@@ -36,17 +36,17 @@ public class printerChido<T extends Comparable<T>> {
         	pintarArbol(root.getDerecha(), pane, x+250, y+100);
         	 root.getLineaDerecha().setStartX(x);
              root.getLineaDerecha().setStartY(y);
-             root.getLineaDerecha().setEndX(x+200);
-             root.getLineaDerecha().setEndY(y+100);
+             root.getLineaDerecha().setEndX(root.getDerecha().getCircle().getCenterX());
+             root.getLineaDerecha().setEndY(root.getDerecha().getCircle().getCenterY());
              pane.getChildren().add(root.getLineaDerecha());
         	
         }
         if(root.getIzquierda()!=null) {
-        	pintarArbol(root.getIzquierda(), pane, x-150, y+100);
+        	pintarArbol(root.getIzquierda(), pane, x-250, y+100);
         	 root.getLineaIzquierda().setStartX(x);
              root.getLineaIzquierda().setStartY(y);
-             root.getLineaIzquierda().setEndX(x-200);
-             root.getLineaIzquierda().setEndY(y+100);
+             root.getLineaIzquierda().setEndX(root.getIzquierda().getCircle().getCenterX());
+             root.getLineaIzquierda().setEndY(root.getIzquierda().getCircle().getCenterY());
              pane.getChildren().add(root.getLineaIzquierda());
         }
 	}

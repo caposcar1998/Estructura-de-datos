@@ -94,12 +94,12 @@ public class Avl<T extends Comparable<T>> {
 	}
   
 	public Nodo <T> nodoMenor(Nodo <T> node){  
-    Nodo <T> nodoActual = node;
-    while (nodoActual.getIzquierda() != null) {  
-    nodoActual = nodoActual.getIzquierda();  
-    }
-    return nodoActual;  
-	}
+		Nodo <T> nodoActual = node;
+		while (nodoActual.getIzquierda() != null) {  
+			nodoActual = nodoActual.getIzquierda();  
+		}
+		return nodoActual;  
+		}
   
 	public int getBalance(Nodo <T> N){  
 	    if (N == null) {

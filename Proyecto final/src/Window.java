@@ -86,10 +86,11 @@ public class Window extends Application {
 			}catch(java.lang.NumberFormatException nf) {
 				String palabra=toInsert.getText();
 				int count=0;
+				try {
 			    for(int i = 0; i < palabra.length(); i++) {    
 		            if(palabra.charAt(i) != ' ')    
 		                count++;    
-		        }
+		        }}catch(java.lang.NullPointerException jN) {}
 			    arbol.insertarElemento(count);
 			}
 			//Método que pone objetos dentro del panel
@@ -112,22 +113,28 @@ public class Window extends Application {
 				}catch(java.lang.NumberFormatException nf) {
 					String palabra=toInsert.getText();
 					int count=0;
+					try {
 				    for(int i = 0; i < palabra.length(); i++) {    
 			            if(palabra.charAt(i) != ' ')    
 			                count++;    
-			        }
+			        }}catch(java.lang.NullPointerException jN) {}
 				    arbol.eliminarElemento(count);
 				}
 				System.out.println(arbol.getRaiz().getElemento());
 				print.pintarArbol(arbol.getRaiz(), canvas, 500, 100);
 				toInsert.setText(null);
+				toDelete.clear();
 			}}
 	  
 	  public class findNode implements EventHandler<ActionEvent>{
 			public void handle(	ActionEvent add){
 				int x=0;
+				try {
 				x=Integer.parseInt(toFind.getText());
 				arbol.recorreEnPostOrden(x, canvas);
+				}catch( java.lang.NumberFormatException jN) {
+					}
+				
 				toFind.clear();
 			}}
 	  
