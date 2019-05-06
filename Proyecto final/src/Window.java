@@ -18,7 +18,7 @@ public class Window extends Application {
 	private HBox menu;
 	private Button insert, delete, find;
 	private TextField toInsert, toDelete, toFind;
-	protected Avl <Integer> arbol = new Avl<>();
+	protected Avl <String> arbol = new Avl<>();
 	protected printerChido print= new printerChido<>();
 	
 	
@@ -79,9 +79,9 @@ public class Window extends Application {
 		public void handle(	ActionEvent add){
 			canvas.getChildren().clear();
 			 
-			int x=0;
+			String x;
 			try {
-			x=Integer.parseInt(toInsert.getText());
+			x=toInsert.getText().toString();
 			arbol.insertarElemento(x);
 			}catch(java.lang.NumberFormatException nf) {
 				String palabra=toInsert.getText();
@@ -91,7 +91,7 @@ public class Window extends Application {
 		            if(palabra.charAt(i) != ' ')    
 		                count++;    
 		        }}catch(java.lang.NullPointerException jN) {}
-			    arbol.insertarElemento(count);
+			    arbol.insertarElemento(Integer.toString(count));
 			}
 			//Método que pone objetos dentro del panel
 			// este metodo tiene que recibir el nodo a insertar, no la raíz
@@ -106,9 +106,9 @@ public class Window extends Application {
 	  public class deleteNode implements EventHandler<ActionEvent>{
 			public void handle(	ActionEvent add){
 				canvas.getChildren().clear();
-				int x=0;
+				String x;
 				try {
-				x=Integer.parseInt(toDelete.getText());
+				x=toDelete.getText().toString();
 				arbol.eliminarElemento(x);
 				}catch(java.lang.NumberFormatException nf) {
 					String palabra=toInsert.getText();
@@ -118,7 +118,7 @@ public class Window extends Application {
 			            if(palabra.charAt(i) != ' ')    
 			                count++;    
 			        }}catch(java.lang.NullPointerException jN) {}
-				    arbol.eliminarElemento(count);
+				    arbol.eliminarElemento(Integer.toString(count));
 				}
 				System.out.println(arbol.getRaiz().getElemento());
 				print.pintarArbol(arbol.getRaiz(), canvas, 500, 100);
@@ -128,9 +128,9 @@ public class Window extends Application {
 	  
 	  public class findNode implements EventHandler<ActionEvent>{
 			public void handle(	ActionEvent add){
-				int x=0;
+				String x;
 				try {
-				x=Integer.parseInt(toFind.getText());
+				x=toFind.getText().toString();
 				arbol.recorreEnPostOrden(x, canvas);
 				}catch( java.lang.NumberFormatException jN) {
 					}
