@@ -86,7 +86,7 @@ public class Window extends Application {
 				if(x!=null) {
 					arbol.insertarElemento(x);
 					System.out.println(arbol.getRaiz().getElemento());
-					print.pintarArbol(arbol.getRaiz(), canvas, 500, 100);
+					print.printNodo(arbol.getRaiz(), canvas);
 					toInsert.setText(null);
 					printF.printNodo(arbol.getRaiz());
 				
@@ -95,7 +95,7 @@ public class Window extends Application {
 		       
 	        }catch(java.lang.NullPointerException jN) {
 				canvas.getChildren().clear();
-				print.pintarArbol(arbol.getRaiz(), canvas, 500, 100);
+				print.printNodo(arbol.getRaiz(), canvas);
 				printF.printNodo(arbol.getRaiz());
 
         }
@@ -112,7 +112,7 @@ public class Window extends Application {
 					if(x!=null) {
 						arbol.eliminarElemento(x);
 						System.out.println(arbol.getRaiz().getElemento());
-						print.pintarArbol(arbol.getRaiz(), canvas, 500, 100);
+						print.printNodo(arbol.getRaiz(), canvas);
 						printF.printNodo(arbol.getRaiz());
 						toDelete.setText(null);
 					
@@ -121,7 +121,7 @@ public class Window extends Application {
 			       
 		        }catch(java.lang.NullPointerException jN) {
 					canvas.getChildren().clear();
-					print.pintarArbol(arbol.getRaiz(), canvas, 500, 100);
+					print.printNodo(arbol.getRaiz(), canvas);
 					printF.printNodo(arbol.getRaiz());
 					toDelete.setText(null);
 	        }
