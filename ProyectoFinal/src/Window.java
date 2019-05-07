@@ -100,7 +100,7 @@ public class Window extends Application {
 						System.out.println(arbol.getRaiz().getElemento());
 						print.printNodo(arbol.getRaiz(), canvas);
 						toInsert.setText(null);
-						printLog("Se ha insertado el elemento '" + x + "'"+" y el balance es '"+arbol.getBalance(arbol.getRaiz())+"' ");
+						printLog("Se ha insertado el elemento '" + x + "'"+" y el balance es '"+arbol.getBalance(arbol.getRaiz())+"' en "+arbol.getRaiz().getElemento());
 					}
 				}catch(java.lang.NullPointerException jN) {
 				}catch(java.lang.NumberFormatException jE) {
