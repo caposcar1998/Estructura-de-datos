@@ -198,7 +198,7 @@ public class Avl<T extends Comparable<T>> {
 			recorreEnPostOrdenRec(nodo.getDerecha(),x, pane);
 
 			System.out.print(nodo.getElemento().toString()+", ");
-			if(nodo.getElemento().compareTo(x)==0) {
+			if(nodo.getElemento()==x) {
 				nodo.getCircle().setStroke(Color.DARKRED);
 				
 				new java.util.Timer().schedule( 
