@@ -20,7 +20,7 @@ public class Window extends Application {
 	private TextField toInsert, toDelete, toFind;
 	protected Avl <Integer> arbol = new Avl<>();
 	protected printerChido print= new printerChido<>();
-	
+	protected PrinterChafa printF = new PrinterChafa<>();
 	
 	
 
@@ -87,17 +87,17 @@ public class Window extends Application {
 				if(x!=null) {
 					arbol.insertarElemento(y);
 					System.out.println(arbol.getRaiz().getElemento());
-					print.printNodo(arbol.getRaiz(), canvas);
+					print.pintarArbol(arbol.getRaiz(), canvas, 500, 100);
 					toInsert.setText(null);
-					
+					printF.printNodo(arbol.getRaiz());
 				
 				}
 				
 		       
 	        }catch(java.lang.NullPointerException jN) {
 				canvas.getChildren().clear();
-				print.printNodo(arbol.getRaiz(), canvas);
-				
+				print.pintarArbol(arbol.getRaiz(), canvas, 500, 100);
+				printF.printNodo(arbol.getRaiz());
 
         }
 			
@@ -106,6 +106,13 @@ public class Window extends Application {
 	  public class deleteNode implements EventHandler<ActionEvent>{
 			public void handle(	ActionEvent add){
 				canvas.getChildren().clear();
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> parent of 674f9f8... Update Window.java
+=======
+>>>>>>> parent of 674f9f8... Update Window.java
 				try {
 					
 
@@ -114,8 +121,8 @@ public class Window extends Application {
 					if(x!=null) {
 						arbol.eliminarElemento(y);
 						System.out.println(arbol.getRaiz().getElemento());
-						print.printNodo(arbol.getRaiz(), canvas);
-						
+						print.pintarArbol(arbol.getRaiz(), canvas, 500, 100);
+						printF.printNodo(arbol.getRaiz());
 						toDelete.setText(null);
 					
 					}
@@ -123,12 +130,38 @@ public class Window extends Application {
 			       
 		        }catch(java.lang.NullPointerException jN) {
 					canvas.getChildren().clear();
-					print.printNodo(arbol.getRaiz(), canvas);
-					
+					print.pintarArbol(arbol.getRaiz(), canvas, 500, 100);
+					printF.printNodo(arbol.getRaiz());
 					toDelete.setText(null);
 	        }
 				
 				
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> parent of 674f9f8... Update Window.java
+				int x=0;
+				try {
+				x=Integer.parseInt(toDelete.getText());
+				arbol.eliminarElemento(x);
+				}catch(java.lang.NumberFormatException nf) {
+					String palabra=toInsert.getText();
+					int count=0;
+					try {
+				    for(int i = 0; i < palabra.length(); i++) {    
+			            if(palabra.charAt(i) != ' ')    
+			                count++;    
+			        }}catch(java.lang.NullPointerException jN) {}
+				    arbol.eliminarElemento(count);
+				}
+				System.out.println(arbol.getRaiz().getElemento());
+				print.pintarArbol(arbol.getRaiz(), canvas, 500, 100);
+				toInsert.setText(null);
+				toDelete.clear();
+>>>>>>> parent of f970b81... String compatibility
+>>>>>>> parent of 674f9f8... Update Window.java
 			}}
 	  
 	  public class findNode implements EventHandler<ActionEvent>{
