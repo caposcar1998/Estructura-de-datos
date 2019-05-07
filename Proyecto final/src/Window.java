@@ -131,7 +131,6 @@ public class Window extends Application {
 			public void handle(	ActionEvent add){
 				canvas.getChildren().clear();
 <<<<<<< HEAD
-<<<<<<< HEAD
 				try {
 					
 
@@ -155,8 +154,6 @@ public class Window extends Application {
 				
 				
 =======
-=======
->>>>>>> parent of f970b81... String compatibility
 				int x=0;
 				try {
 				x=Integer.parseInt(toDelete.getText());
