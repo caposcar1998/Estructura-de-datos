@@ -18,7 +18,7 @@ public class Window extends Application {
 	private HBox menu;
 	private Button insert, delete, find;
 	private TextField toInsert, toDelete, toFind;
-	protected Avl <String> arbol = new Avl<>();
+	protected Avl <Integer> arbol = new Avl<>();
 	protected printerChido print= new printerChido<>();
 	
 	
@@ -83,8 +83,9 @@ public class Window extends Application {
 				
 
 				String x=toInsert.getText().toString();
+				int y = Integer.parseInt(x);
 				if(x!=null) {
-					arbol.insertarElemento(x);
+					arbol.insertarElemento(y);
 					System.out.println(arbol.getRaiz().getElemento());
 					print.printNodo(arbol.getRaiz(), canvas);
 					toInsert.setText(null);
@@ -109,8 +110,9 @@ public class Window extends Application {
 					
 
 					String x=toDelete.getText().toString();
+					int y = Integer.parseInt(x);
 					if(x!=null) {
-						arbol.eliminarElemento(x);
+						arbol.eliminarElemento(y);
 						System.out.println(arbol.getRaiz().getElemento());
 						print.printNodo(arbol.getRaiz(), canvas);
 						
@@ -134,7 +136,8 @@ public class Window extends Application {
 				String x;
 				try {
 				x=toFind.getText().toString();
-				arbol.recorreEnPostOrden(x, canvas);
+				int y = Integer.parseInt(x);
+				arbol.recorreEnPostOrden(y, canvas);
 				}catch( java.lang.NumberFormatException jN) {
 					}
 				
