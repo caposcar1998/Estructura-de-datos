@@ -105,6 +105,10 @@ public class Window extends Application {
 	  public class deleteNode implements EventHandler<ActionEvent>{
 			public void handle(	ActionEvent add){
 				canvas.getChildren().clear();
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> parent of 674f9f8... Update Window.java
 				try {
 					
 
@@ -127,6 +131,29 @@ public class Window extends Application {
 	        }
 				
 				
+<<<<<<< HEAD
+=======
+=======
+				int x=0;
+				try {
+				x=Integer.parseInt(toDelete.getText());
+				arbol.eliminarElemento(x);
+				}catch(java.lang.NumberFormatException nf) {
+					String palabra=toInsert.getText();
+					int count=0;
+					try {
+				    for(int i = 0; i < palabra.length(); i++) {    
+			            if(palabra.charAt(i) != ' ')    
+			                count++;    
+			        }}catch(java.lang.NullPointerException jN) {}
+				    arbol.eliminarElemento(count);
+				}
+				System.out.println(arbol.getRaiz().getElemento());
+				print.pintarArbol(arbol.getRaiz(), canvas, 500, 100);
+				toInsert.setText(null);
+				toDelete.clear();
+>>>>>>> parent of f970b81... String compatibility
+>>>>>>> parent of 674f9f8... Update Window.java
 			}}
 	  
 	  public class findNode implements EventHandler<ActionEvent>{
