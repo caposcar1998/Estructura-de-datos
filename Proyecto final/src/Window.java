@@ -106,8 +106,11 @@ public class Window extends Application {
 			public void handle(	ActionEvent add){
 				canvas.getChildren().clear();
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
+>>>>>>> parent of 674f9f8... Update Window.java
+=======
 >>>>>>> parent of 674f9f8... Update Window.java
 				try {
 					
@@ -133,7 +136,10 @@ public class Window extends Application {
 				
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 674f9f8... Update Window.java
 				int x=0;
 				try {
 				x=Integer.parseInt(toDelete.getText());
