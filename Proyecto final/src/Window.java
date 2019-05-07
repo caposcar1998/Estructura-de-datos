@@ -20,7 +20,7 @@ public class Window extends Application {
 	private TextField toInsert, toDelete, toFind;
 	protected Avl <String> arbol = new Avl<>();
 	protected printerChido print= new printerChido<>();
-	
+	protected PrinterChafa printF = new PrinterChafa<>();
 	
 	
 
@@ -88,7 +88,7 @@ public class Window extends Application {
 					System.out.println(arbol.getRaiz().getElemento());
 					print.printNodo(arbol.getRaiz(), canvas);
 					toInsert.setText(null);
-					
+					printF.printNodo(arbol.getRaiz());
 				
 				}
 				
@@ -96,7 +96,7 @@ public class Window extends Application {
 	        }catch(java.lang.NullPointerException jN) {
 				canvas.getChildren().clear();
 				print.printNodo(arbol.getRaiz(), canvas);
-				
+				printF.printNodo(arbol.getRaiz());
 
         }
 			
@@ -120,7 +120,7 @@ public class Window extends Application {
 						arbol.eliminarElemento(x);
 						System.out.println(arbol.getRaiz().getElemento());
 						print.printNodo(arbol.getRaiz(), canvas);
-						
+						printF.printNodo(arbol.getRaiz());
 						toDelete.setText(null);
 					
 					}
@@ -129,7 +129,7 @@ public class Window extends Application {
 		        }catch(java.lang.NullPointerException jN) {
 					canvas.getChildren().clear();
 					print.printNodo(arbol.getRaiz(), canvas);
-					
+					printF.printNodo(arbol.getRaiz());
 					toDelete.setText(null);
 	        }
 				
