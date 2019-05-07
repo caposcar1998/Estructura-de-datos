@@ -187,11 +187,12 @@ public class Avl<T extends Comparable<T>> {
 			recorreEnInOrdenRec(nodo.getDerecha());
 		}
 	}
-	public Nodo<T> recorreEnPostOrden(T x, Pane pane) {
-		return 	recorreEnPostOrdenRec(raiz, x, pane);
+	public void recorreEnPostOrden(T x, Pane pane) {
+		recorreEnPostOrdenRec(raiz, x, pane);
+	
 	}
 	
-	private Nodo<T> recorreEnPostOrdenRec(Nodo<T> nodo, T x, Pane pane) {
+	private void recorreEnPostOrdenRec(Nodo<T> nodo, T x, Pane pane) {
 		if(nodo!=null) {
 			recorreEnPostOrdenRec(nodo.getIzquierda(),x, pane);
 			recorreEnPostOrdenRec(nodo.getDerecha(),x, pane);
@@ -210,12 +211,12 @@ public class Avl<T extends Comparable<T>> {
 				        5000 
 				);
 				
-				return nodo;
+				
 			}
 			
 		}
 			
-		return null;
+		
 	}	
 	
 	

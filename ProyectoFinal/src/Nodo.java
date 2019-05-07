@@ -3,8 +3,8 @@ import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 
 public class Nodo<T extends Comparable<T>> {
-	
-	private T elemento; 
+
+	private T elemento;
 	private Nodo<T> izquierda;
 	private Nodo<T> derecha;
 	private int altura;
@@ -12,10 +12,8 @@ public class Nodo<T extends Comparable<T>> {
 	private Line lineaIzquierda;
 	private Line lineaDerecha;
 	private Text texto;
-	private Boolean encontrado;
-	private Text balanceVentana;
-	
-	
+
+
 	public Nodo(T elemento) {
 		this.circle=new Circle();
 		this.lineaIzquierda=new Line();
@@ -41,7 +39,7 @@ public class Nodo<T extends Comparable<T>> {
 	public void setDerecha(Nodo<T> derecha) {
 		this.derecha = derecha;
 	}
-	
+
 	public int compareTo(T arg0) {
 		// ODO Auto-generated method stub
 		return 0;
@@ -76,18 +74,5 @@ public class Nodo<T extends Comparable<T>> {
 	public void setTexto(Text texto) {
 		this.texto = texto;
 	}
-	public Boolean getEncontrado() {
-		return encontrado;
-	}
-	public void setEncontrado(Boolean encontrado) {
-		this.encontrado = encontrado;
-	}
-	public Text getBalanceVentana() {
-		return balanceVentana;
-	}
-	public void setBalanceVentana(Text balanceVentana) {
-		this.balanceVentana = balanceVentana;
-	}
-	
 
 }

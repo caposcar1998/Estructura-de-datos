@@ -1,3 +1,5 @@
+import javax.swing.JOptionPane;
+
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
@@ -9,13 +11,13 @@ public class Avl<T extends Comparable<T>> {
 	public Nodo<T> getRaiz() {
 		return raiz;
 	}
-	
-	
+
+
 	public void insertarElemento(T elemento) {
 		raiz= insertaRecursivo(elemento,raiz);
 	}
-	
-	
+
+
 	public Nodo<T> insertaRecursivo(T elemento,Nodo<T> raiz) {
 		if(raiz==null) {
 			raiz= new Nodo<T>(elemento);
@@ -25,8 +27,10 @@ public class Avl<T extends Comparable<T>> {
 				if(altura(raiz.getIzquierda())-altura(raiz.getDerecha())==-2) {
 					if(elemento.compareTo(raiz.getDerecha().getElemento())>0) {
 						raiz= rotaSimpleALaIzquierda(raiz);
+						JOptionPane.showMessageDialog(null,"Desbalance en "+raiz.getElemento() );
 					}else {
 						raiz= rotarDobleALaIzquierda(raiz);
+						JOptionPane.showMessageDialog(null,"Desbalance en "+raiz.getElemento() );
 					}
 				}
 			}
@@ -35,19 +39,21 @@ public class Avl<T extends Comparable<T>> {
 				if(altura(raiz.getIzquierda())-altura(raiz.getDerecha())==2) {
 					if(elemento.compareTo(raiz.getIzquierda().getElemento())<0) {
 						raiz= rotaSimpleALaDerecha(raiz);
+						JOptionPane.showMessageDialog(null,"Desbalance en "+raiz.getElemento() );
 					}else {
 						raiz= rotarDobleALaDerecha(raiz);
+						JOptionPane.showMessageDialog(null,"Desbalance en "+raiz.getElemento() );
 					}
-				}	
+				}
 			}
 		}
-		
+
 		int altura= max(altura (raiz.getIzquierda()),altura(raiz.getDerecha()));
 		System.out.println("Altura nodo: "+raiz.getElemento()+" "+altura);
 		raiz.setAltura(altura+1);
 		return raiz;
 	}
-	
+
 	public Nodo<T> rotaSimpleALaIzquierda(Nodo<T> raiz){
 		Nodo<T> temp= raiz.getDerecha();
 		raiz.setDerecha(temp.getIzquierda());
@@ -63,8 +69,8 @@ public class Avl<T extends Comparable<T>> {
 		raiz.setAltura(max(altura(raiz.getIzquierda()),altura(raiz.getDerecha()))+1);
 		temp.setAltura(max(altura(temp.getIzquierda()),altura(raiz))+1);
 		return temp;
-	}	
-	
+	}
+
 	public Nodo<T> rotarDobleALaIzquierda(Nodo<T> raiz){
 		raiz.setDerecha(rotaSimpleALaDerecha(raiz.getDerecha()));
 		return rotaSimpleALaIzquierda(raiz);
@@ -80,7 +86,7 @@ public class Avl<T extends Comparable<T>> {
 			return b;
 		}
 	}
-	
+
 	public int altura(Nodo<T> nodo) {
 		if(nodo==null) {
 			return -1;
@@ -88,87 +94,93 @@ public class Avl<T extends Comparable<T>> {
 			return nodo.getAltura();
 		}
 	}
-	
+
 	public void eliminarElemento(T elemento) {
 		raiz= eliminarRecursivo(elemento,raiz);
 	}
-  
-	public Nodo <T> nodoMenor(Nodo <T> node){  
+
+	public Nodo <T> nodoMenor(Nodo <T> node){
 		Nodo <T> nodoActual = node;
-		while (nodoActual.getIzquierda() != null) {  
-			nodoActual = nodoActual.getIzquierda();  
+		while (nodoActual.getIzquierda() != null) {
+			nodoActual = nodoActual.getIzquierda();
 		}
-		return nodoActual;  
-		}
-  
-	public int getBalance(Nodo <T> N){  
+		return nodoActual;
+	}
+
+	public int getBalance(Nodo <T> N){
 	    if (N == null) {
 	        return 0;
 	    }
-    return altura(N.getIzquierda()) - altura(N.getDerecha());  
-	}  
-  
+    return altura(N.getIzquierda()) - altura(N.getDerecha());
+	}
+
 	public Nodo<T> eliminarRecursivo(T elemento, Nodo<T> raiz)  {
+		//Para encontrar el elemento (solo recorre todos los izq o todos los derechos)
         if (raiz == null) {
-            return raiz;  
+            return raiz;
         }
         if (elemento.compareTo(raiz.getElemento())<0) {
             raiz.setIzquierda(eliminarRecursivo(elemento, raiz.getIzquierda()));
-            } 
+            }
         else if (elemento.compareTo(raiz.getElemento())>0) {
             raiz.setDerecha(eliminarRecursivo(elemento,raiz.getDerecha()));
-        } 
-        else{
-            if ((raiz.getIzquierda() == null) || (raiz.getDerecha() == null)){  
-                Nodo<T> temp = null;  
-                if (temp == raiz.getIzquierda()) { 
-                    temp = raiz.getDerecha();  
-                }else {
-                    temp = raiz.getIzquierda();  
-                }if (temp == null){  
-                    temp = raiz;  
-                    raiz = null;  
-                }  
-                else { 
-                    raiz = temp; 
-                }
-            }  
-            else
-            {  
-                Nodo<T> temp = nodoMenor(raiz.getDerecha());  
-                raiz.setElemento(temp.getElemento());  
-                raiz.setDerecha(eliminarRecursivo(temp.getElemento(),raiz.getDerecha()));  
-            }  
         }
-        if (raiz == null) { 
+        else{
+        	//Una vez que se alcanza el ultimo derecho o izquierdo, se compara su opuesto lado izq o der respectivamente
+            if ((raiz.getIzquierda() == null) || (raiz.getDerecha() == null)){
+                Nodo<T> temp = null;
+                if (temp == raiz.getIzquierda()) {
+                    temp = raiz.getDerecha();
+                }else {
+                    temp = raiz.getIzquierda();
+                //se encuentra el elemento y se elimina el nodo
+                }if (temp == null){
+                    temp = raiz;
+                    raiz = null;
+                }
+                else {
+                    raiz = temp;
+                }
+            }
+            else
+            {
+            	//se ejecuta el resto del codigo, rebalanceo del arbol y sustitución
+                Nodo<T> temp = nodoMenor(raiz.getDerecha()); //se busca el nodo mas pequeño a la derecha
+                raiz.setElemento(temp.getElemento());//se le asigna ese elemento como a la raiz
+                //Se sustituye el elemento borrado por el elemento mas pequeño a la derecha y se elimina ese nodo
+                raiz.setDerecha(eliminarRecursivo(temp.getElemento(),raiz.getDerecha()));
+            }
+        }
+        if (raiz == null) {
             return raiz;
         }
+        //se busca el desbalanceo en el arbol para ajustarlo despues de sustituir el elemento
         raiz.setAltura(max(altura(raiz.getIzquierda()),altura(raiz.getDerecha()))+1);
         int balance = getBalance(raiz);
-        
+
         // Rotacion simple derecha (en linea 3 nodos izquierda)
         if (balance > 1 && getBalance(raiz.getIzquierda()) >= 0){
-            return rotaSimpleALaDerecha(raiz);  
+            return rotaSimpleALaDerecha(raiz);
         }
-        // Rotación doble a la derecha (2 izquierda 1 derecha)
-        if (balance > 1 && getBalance(raiz.getIzquierda()) < 0){  
+        // Rotaciï¿½n doble a la derecha (2 izquierda 1 derecha)
+        if (balance > 1 && getBalance(raiz.getIzquierda()) < 0){
           return rotarDobleALaDerecha(raiz);
-        }  
-        // Rotación simple a la izquierda (en linea 3 nodos derecha)
-        if (balance < -1 && getBalance(raiz.getDerecha()) <= 0) { 
+        }
+        // Rotaciï¿½n simple a la izquierda (en linea 3 nodos derecha)
+        if (balance < -1 && getBalance(raiz.getDerecha()) <= 0) {
             return rotaSimpleALaIzquierda(raiz);
         }
-        // Rotación doble a la izquierda  (2 derecha 1 izquierda)
-        if (balance < -1 && getBalance(raiz.getDerecha()) > 0){  
+        // Rotaciï¿½n doble a la izquierda  (2 derecha 1 izquierda)
+        if (balance < -1 && getBalance(raiz.getDerecha()) > 0){
             return rotarDobleALaIzquierda(raiz);
         }
-        return raiz;  
-    }  
-	
+        return raiz;
+    }
+
 	public void recorreEnPreOrden() {
 		recorreEnPreOrdenRec(raiz);
 	}
-	
+
 	private void recorreEnPreOrdenRec(Nodo<T> nodo) {
 		if(nodo!=null) {
 			System.out.print(nodo.getElemento().toString()+", ");
@@ -179,7 +191,7 @@ public class Avl<T extends Comparable<T>> {
 	public void recorreEnInOrden() {
 		recorreEnInOrdenRec(raiz);
 	}
-	
+
 	private void recorreEnInOrdenRec(Nodo<T> nodo) {
 		if(nodo!=null) {
 			recorreEnInOrdenRec(nodo.getIzquierda());
@@ -187,11 +199,11 @@ public class Avl<T extends Comparable<T>> {
 			recorreEnInOrdenRec(nodo.getDerecha());
 		}
 	}
-	public Nodo<T> recorreEnPostOrden(T x, Pane pane) {
-		return 	recorreEnPostOrdenRec(raiz, x, pane);
+	public void recorreEnPostOrden(T x, Pane pane) {
+		recorreEnPostOrdenRec(raiz, x, pane);
 	}
-	
-	private Nodo<T> recorreEnPostOrdenRec(Nodo<T> nodo, T x, Pane pane) {
+
+	private void recorreEnPostOrdenRec(Nodo<T> nodo, T x, Pane pane) {
 		if(nodo!=null) {
 			recorreEnPostOrdenRec(nodo.getIzquierda(),x, pane);
 			recorreEnPostOrdenRec(nodo.getDerecha(),x, pane);
@@ -199,46 +211,43 @@ public class Avl<T extends Comparable<T>> {
 			System.out.print(nodo.getElemento().toString()+", ");
 			if(nodo.getElemento().compareTo(x)==0) {
 				nodo.getCircle().setStroke(Color.DARKRED);
-				
-				new java.util.Timer().schedule( 
+				new java.util.Timer().schedule(
 				        new java.util.TimerTask() {
 				            @Override
 				            public void run() {
 				               nodo.getCircle().setStroke(Color.BLACK);
 				            }
-				        }, 
-				        5000 
+				        },
+				        5000
 				);
-				
-				return nodo;
+
 			}
-			
+
 		}
-			
-		return null;
-	}	
-	
-	
+
+	}
+
+
 	/*
-	public T printPostorder(Nodo<T> node) 
-    { 
-        if (node == null) 
-            return node.getElemento(); 
-  
-        // first recur on left subtree 
-        printPostorder(node.getIzquierda()); 
-  
-        // then recur on right subtree 
-        printPostorder(node.getDerecha()); 
-  
-        // now deal with the node 
+	public T printPostorder(Nodo<T> node)
+    {
+        if (node == null)
+            return node.getElemento();
+
+        // first recur on left subtree
+        printPostorder(node.getIzquierda());
+
+        // then recur on right subtree
+        printPostorder(node.getDerecha());
+
+        // now deal with the node
         System.out.print(node.getElemento() + " ");
-		return node.getElemento(); 
-    } 
+		return node.getElemento();
+    }
 	*/
-	
-	
 
 
-	
+
+
+
 }

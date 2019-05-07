@@ -12,8 +12,6 @@ public class Nodo<T extends Comparable<T>> {
 	private Line lineaIzquierda;
 	private Line lineaDerecha;
 	private Text texto;
-	private Boolean encontrado;
-	private Text balanceVentana;
 	
 	
 	public Nodo(T elemento) {
@@ -75,18 +73,6 @@ public class Nodo<T extends Comparable<T>> {
 	}
 	public void setTexto(Text texto) {
 		this.texto = texto;
-	}
-	public Boolean getEncontrado() {
-		return encontrado;
-	}
-	public void setEncontrado(Boolean encontrado) {
-		this.encontrado = encontrado;
-	}
-	public Text getBalanceVentana() {
-		return balanceVentana;
-	}
-	public void setBalanceVentana(Text balanceVentana) {
-		this.balanceVentana = balanceVentana;
 	}
 	
 

@@ -1,0 +1,55 @@
+#circles{
+	-fx-fill: grey;
+	-fx-stroke: black;
+}
+
+#circles:hover{
+	-fx-stroke: grey;
+}
+
+#menu{
+	-fx-padding: 0;
+	-fx-end-margin: 0;
+}
+
+#total{
+	-fx-background-color: #E0EAFC;
+}
+
+#find{
+	-fx-background-color: linear-gradient(#7ebcea, #2f4b8f);
+    -fx-background-insets: 0,1,2,3;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+}
+
+#delete{
+	-fx-background-color: #F11712;
+    -fx-background-insets: 0,1,2,3;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+}
+
+#insert{
+	-fx-background-color: #2C7744;
+    -fx-background-insets: 0,1,2,3;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+}
+
+.button:hover{
+	-fx-opacity: 50%;
+}
+
+#label{
+	-fx-font-style: italic;
+	-fx-font-size: 18;
+}
+
+#title{
+	-fx-font-weight: bold;
+	-fx-font-size: 24;
+	-fx-font-family: fantasy;
+	-fx-text-fill: white;
+	-fx-padding: 10 100;
+}
